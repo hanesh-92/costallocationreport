@@ -2,7 +2,7 @@ import os
 import boto3
 import datetime
 import logging
-import pandas as pd
+#import pandas as pd
 # For date
 from dateutil.relativedelta import relativedelta
 
@@ -308,7 +308,7 @@ class CostExplorer:
             s3 = boto3.client('s3')
             s3.upload_file("cost_explorer_report.xlsx", os.environ.get('S3_BUCKET'), "cost_explorer_report.xlsx")
 
-def main_handler(event=None, context=None):
+def lambda_handler(event, context):
     costexplorer = CostExplorer(CurrentMonth=False)
     # Default addReport has filter to remove Support / Credits / Refunds / UpfrontRI
     # Overall Billing Reports
@@ -346,4 +346,4 @@ def main_handler(event=None, context=None):
 
 
 if __name__ == '__main__':
-    main_handler()
+    lambda_handler()
