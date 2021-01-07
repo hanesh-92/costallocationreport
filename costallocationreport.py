@@ -2,7 +2,7 @@ import os
 import boto3
 import datetime
 import logging
-#import pandas as pd
+import pandas as pd
 # For date
 from dateutil.relativedelta import relativedelta
 
