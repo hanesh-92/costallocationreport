@@ -84,7 +84,7 @@ class CostExplorer:
                         'Start': self.ristart.isoformat(),
                         'End': self.riend.isoformat()
                     },
-                    Granularity='DAILY',
+                    Granularity='MONTHLY',
                     NextPageToken=nextToken
                 )
                 results.extend(response['CoveragesByTime'])
@@ -111,7 +111,7 @@ class CostExplorer:
                     'Start': self.start.isoformat(),
                     'End': self.riend.isoformat()
                 },
-                Granularity='DAILY'
+                Granularity='MONTHLY'
             )
             results.extend(response['UtilizationsByTime'])
             while 'nextToken' in response:
@@ -176,7 +176,7 @@ class CostExplorer:
     def addReport(self, Name="Default", GroupBy=[{"Type": "DIMENSION", "Key": "SERVICE"}, ],
                   Style='Total', NoCredits=True, CreditsOnly=False, RefundOnly=False, UpfrontOnly=False,
                   IncSupport=False):
-        type = 'chart'  # other option table
+        
         results = []
         if not NoCredits:
             response = self.client.get_cost_and_usage(
@@ -184,7 +184,7 @@ class CostExplorer:
                     'Start': self.start.isoformat(),
                     'End': self.end.isoformat()
                 },
-                Granularity='DAILY',
+                Granularity='MONTHLY',
                 Metrics=[
                     'UnblendedCost',
                 ],
@@ -228,7 +228,7 @@ class CostExplorer:
                     'Start': self.start.isoformat(),
                     'End': self.end.isoformat()
                 },
-                Granularity='DAILY',
+                Granularity='MONTHLY',
                 Metrics=[
                     'UnblendedCost',
                 ],
@@ -246,7 +246,7 @@ class CostExplorer:
                         'Start': self.start.isoformat(),
                         'End': self.end.isoformat()
                     },
-                    Granularity='DAILY',
+                    Granularity='MONTHLY',
                     Metrics=[
                         'UnblendedCost',
                     ],
